@@ -33,6 +33,10 @@ class LoginScreen(tk.Frame):
         for widget in root.winfo_children():
             widget.destroy()
         self.gui = GUI1(root)
+        root.grid_rowconfigure(0, weight=1)
+        root.grid_rowconfigure(6, weight=1)
+        root.grid_columnconfigure(0, weight=1)
+        root.grid_columnconfigure(3, weight=0)
         self.gui.grid()
         return
         
@@ -40,22 +44,26 @@ class GUI1(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
         self.label = tk.Label(master, text="Hello from %s" % __file__)
-        self.label.grid(row=0, column=0, padx=20, pady=20)
-        self.logout_button = tk.Button(master, text="Log out", command=self.login_screen).grid(row=1, column=0, padx=10, pady=10)
+        self.label.grid(row=1, column=0, padx=20, pady=20)
+        self.logout_button = tk.Button(master, text="Log out", command=self.login_screen).grid(row=2, column=0, padx=10, pady=10)
     
     def login_screen(self):
         for widget in root.winfo_children():
             widget.destroy()
         self.loginScreen = LoginScreen(root)
+        root.grid_rowconfigure(0, weight=1)
+        root.grid_rowconfigure(6, weight=1)
+        root.grid_columnconfigure(0, weight=1)
+        root.grid_columnconfigure(3, weight=1, minsize=60)
         self.loginScreen.grid()
         return
 
 root = tk.Tk()
 root.title("Music School Management System")
+login = LoginScreen(root)
 root.grid_rowconfigure(0, weight=1)
 root.grid_rowconfigure(6, weight=1)
 root.grid_columnconfigure(0, weight=1)
 root.grid_columnconfigure(3, weight=1, minsize=60)
-login = LoginScreen(root)
 login.grid()
 root.mainloop()
