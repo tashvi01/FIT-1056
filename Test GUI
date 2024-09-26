@@ -1,0 +1,61 @@
+# Third party imports
+import tkinter as tk
+
+class LoginScreen(tk.Frame):
+    def __init__(self, master):
+        super().__init__(master)
+        self.mainframe = tk.Frame(root, padx=3, pady=12).grid(column=0, row=0)
+        self.logo = tk.PhotoImage("logo", file="logo.png")
+        self.label = tk.Label(image=self.logo, width=128, height=128)
+        self.label.image = self.logo
+        self.label.grid(row=0, column=2, sticky=tk.S, padx=10, pady=10)
+
+        # Welcome heading
+        self.login_title = tk.Label(master=self.mainframe, text="Welcome to Music School Management System", font=("Arial Bold", 20)).grid(row=1, column=0, columnspan=4, pady=10)
+
+        self.username_label = tk.Label(master=self.mainframe, text="Username:").grid(row=2, column=1, pady=10, sticky=tk.E)
+
+        self.username_var = tk.StringVar()
+        self.username_entry = tk.Entry(master=self.mainframe, textvariable=self.username_var).grid(row=2, column=2, pady=10)
+
+        self.password_label = tk.Label(master=self.mainframe, text="Password:").grid(row=3, column=1, pady=10, sticky=tk.E)
+
+        self.password_var = tk.StringVar()
+        self.username_entry = tk.Entry(master=self.mainframe, textvariable=self.password_var, show="●").grid(row=3, column=2, pady=10)
+
+        # Button to login
+        self.login_button = tk.Button(master=self.mainframe, text="Login", command=self.call_GUI1).grid(row=4, column=2, padx=10, pady=10)
+
+        # Button to shut down
+        self.shutdown_button = tk.Button(master=self.mainframe, text="Shut down", command=root.destroy).grid(row=5, column=2, padx=10, pady=10)
+
+    def call_GUI1(self):
+        for widget in root.winfo_children():
+            widget.destroy()
+        self.gui = GUI1(root)
+        self.gui.grid()
+        return
+        
+class GUI1(tk.Frame):   
+    def __init__(self, master):
+        super().__init__(master)
+        self.label = tk.Label(master, text="Hello from %s" % __file__)
+        self.label.grid(row=0, column=0, padx=20, pady=20)
+        self.logout_button = tk.Button(master, text="Log out", command=self.login_screen).grid(row=1, column=0, padx=10, pady=10)
+    
+    def login_screen(self):
+        for widget in root.winfo_children():
+            widget.destroy()
+        self.loginScreen = LoginScreen(root)
+        self.loginScreen.grid()
+        return
+
+root = tk.Tk()
+root.title("Music School Management System")
+root.grid_rowconfigure(0, weight=1)
+root.grid_rowconfigure(6, weight=1)
+root.grid_columnconfigure(0, weight=1)
+root.grid_columnconfigure(3, weight=1, minsize=60)
+login = LoginScreen(root)
+login.grid()
+root.mainloop()
