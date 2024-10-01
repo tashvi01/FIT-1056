@@ -14,7 +14,7 @@ def main():
     Returns:
     (None)
     """
-    root = EmpowerU(title="EmpowerU", width=860, height=620)
+    root = EmpowerU(title="EmpowerU", width=860, height=620, bg="navy")
     root.mainloop()
     print("EmpowerU proper shutdown completed.")
 
