@@ -2,7 +2,7 @@ import tkinter as tk
 from GUI.Login_UI import LoginScreen
 
 class EmpowerU(tk.Tk):
-    def __init__(self, title, width, height):
+    def __init__(self, title, width, height, bg):
         """
         Constructor for the EmpowerU class.
 
@@ -12,6 +12,7 @@ class EmpowerU(tk.Tk):
         super().__init__()
         super().title(title)
         super().geometry(f"{width}x{height}")
+        super().configure(bg=bg)
 
         self.login = LoginScreen(master=self)
         self.show_login()
