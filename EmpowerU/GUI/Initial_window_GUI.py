@@ -21,7 +21,7 @@ class LoginScreen(tk.Frame):
         self.register_button = tk.Button(self.mainframe, text="Register", command= self.open_register)
         self.register_button.grid(row=2, column=0, padx=10, pady=5)
 
-        self.signin_button = tk.Button(self.mainframe, text="Sign In")
+        self.signin_button = tk.Button(self.mainframe, text="Sign In",command=self.open_signin)
         self.signin_button.grid(row=3, column=0, padx=10, pady=5)
 
         self.signout_button = tk.Button(self.mainframe, text="Sign Out")
