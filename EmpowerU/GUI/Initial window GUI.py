@@ -1,6 +1,6 @@
 import tkinter as tk
 from Register import Register
-
+from sign_in import SignIn
 class LoginScreen(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
@@ -39,6 +39,14 @@ class LoginScreen(tk.Frame):
         # Initialize and display the Register class
         register_frame = Register(self.master)
         register_frame.grid(sticky="nsew")
+        
+    def open_signin(self):
+        # Clear the mainframe
+        for widget in self.mainframe.winfo_children():
+            widget.destroy()
+        # Initialize and display the Register class
+        signin_frame = SignIn(self.master)
+        signin_frame.grid(sticky="nsew")
 
 root = tk.Tk()
 root.title("Music School Management System")
