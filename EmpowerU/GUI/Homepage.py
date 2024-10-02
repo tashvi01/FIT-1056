@@ -28,8 +28,6 @@ class Homepage(tk.Frame):
         for i in [0,1,2]:
             bot_screen.grid_columnconfigure(i, weight=1)
         
-        asd = tk.Label(self,text = "asd")
-        asd.grid(row=0, column=0)
 
 
 
