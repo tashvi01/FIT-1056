@@ -9,58 +9,55 @@ class Homepage(tk.Frame):
     def __init__(self,master):
         super().__init__(master)
         self.fullscreen(master)
-        self.Topbar()
-        self.Botscreen()
+        
         
         
         #background colour learnt from https://www.geeksforgeeks.org/tkinter-colors/
         self.config(bg="lightblue")
         
         self.logo = tk.PhotoImage(file="logo.png")
-        
 
-
-    def Botscreen(self):
-
-        bot_screen = tk.Frame(self.master, bg = "lightblue")
-        bot_screen.grid(row=1,column=0,columnspan=3,sticky="nsew")
-
-        for i in [0,1]:
-            bot_screen.grid_rowconfigure(i, weight=1)
-
-        for i in [0,1,2]:
-            bot_screen.grid_columnconfigure(i, weight=1)
-        
-
-
-
-    def Topbar(self):
-
-        top_bar = tk.Frame(self.master, bg="steelblue")  # Specify the background color and height
-        top_bar.grid(row=0, column=0, sticky="new")  # Place it in the first row and expand it east-west
+        self.top_bar = tk.Frame(self.master, bg="steelblue")  # Specify the background color and height
+        self.top_bar.grid(row=0, column=0, sticky="new")  # Place it in the first row and expand it east-west
 
         self.grid_rowconfigure(0, weight=0)  # Keep the top bar fixed height
         
         self.grid_columnconfigure(0, weight=1) #allows column 0 to exapnd horizontally
 
         # fotnsize https://www.geeksforgeeks.org/how-to-change-the-tkinter-label-font-size/
-        home_label = tk.Label(top_bar, text="HOME", bg="steelblue",font = "Impact 20")
-        home_label.grid(row=0,column=0,padx=20,pady=20)
+        self.home_label = tk.Label(self.top_bar, text="HOME", bg="steelblue",font = "Impact 20")
+        self.home_label.grid(row=0,column=0,padx=20,pady=20)
 
 
         #TODO: progress bar
-        progressbar_filler = tk.Label(top_bar,text = "PROGRESS BAR PLACEHOLDER",font = "Impact 20")
-        progressbar_filler.grid(row=0,column=1,padx=20,pady=20)
+        self.progressbar_filler = tk.Label(self.top_bar,text = "PROGRESS BAR PLACEHOLDER",font = "Impact 20")
+        self.progressbar_filler.grid(row=0,column=1,padx=20,pady=20)
 
-        profile_button = tk.Button(top_bar,text="PROFILE",font = "Impact 20")
-        profile_button.grid(row=0,column=2,padx=20,pady=20)
+        self.profile_button = tk.Button(self.top_bar,text="PROFILE",font = "Impact 20")
+        self.profile_button.grid(row=0,column=2,padx=20,pady=20)
 
         #configures the columns for the top bar
-        top_bar.grid_columnconfigure(0, weight=1)
-        top_bar.grid_columnconfigure(1, weight=1)
-        top_bar.grid_columnconfigure(2, weight=1)
+        self.top_bar.grid_columnconfigure(0, weight=1)
+        self.top_bar.grid_columnconfigure(1, weight=1)
+        self.top_bar.grid_columnconfigure(2, weight=1)
+
+        self.bot_screen = tk.Frame(self.master, bg = "lightblue")
+        self.bot_screen.grid(row=1,column=0,columnspan=3,sticky="nsew")
+
+        for i in [0,1]:
+            self.bot_screen.grid_rowconfigure(i, weight=1)
+
+        for i in [0,1,2]:
+            self.bot_screen.grid_columnconfigure(i, weight=1)
+        
 
 
+    
+        
+
+
+
+    
 
     
 
