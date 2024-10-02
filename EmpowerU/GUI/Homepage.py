@@ -11,11 +11,29 @@ class Homepage(tk.Frame):
         self.master = master
         self.fullscreen(master)
         
-        
+        self.mainframe = tk.Frame(self.master,bg="lightblue")
+        self.mainframe.grid(row=0,column=0,sticky="nsew")
         
         #background colour learnt from https://www.geeksforgeeks.org/tkinter-colors/
         self.config(bg="lightblue")
         
+        #BOTTOM HALF OF SCREEN
+        # self.bot_screen = tk.Frame(self.master, bg = "lightblue")
+        # self.bot_screen.grid(row=0,column=0,sticky="sew")
+
+        # # Configure rows and columns for even distribution
+        self.mainframe.grid_rowconfigure(0, weight=1)
+        self.mainframe.grid_rowconfigure(1, weight=1)  
+        self.mainframe.grid_rowconfigure(2, weight=1)
+
+        self.mainframe.grid_columnconfigure(0, weight=1)
+        self.mainframe.grid_columnconfigure(1, weight=1)  
+        self.mainframe.grid_columnconfigure(2, weight=1)
+            
+
+        self.logo = tk.PhotoImage(file="logo.png")
+        self.logo_label = tk.Label(self.mainframe,image=self.logo)
+        self.logo_label.grid(row = 1, column=2,sticky="e")
         
 
         self.top_bar = tk.Frame(self.master, bg="steelblue")  # Specify the background color and height
@@ -42,23 +60,6 @@ class Homepage(tk.Frame):
         self.top_bar.grid_columnconfigure(2, weight=1)
 
 
-        #BOTTOM HALF OF SCREEN
-        self.bot_screen = tk.Frame(self.master, bg = "lightblue")
-        self.bot_screen.grid(row=1,column=0,columnspan=3,sticky="nsew")
-
-        # Configure rows and columns for even distribution
-        self.bot_screen.grid_rowconfigure(0, weight=1)
-        self.bot_screen.grid_rowconfigure(1, weight=1)  
-        self.bot_screen.grid_rowconfigure(2, weight=1)
-
-        self.bot_screen.grid_columnconfigure(0, weight=1)
-        self.bot_screen.grid_columnconfigure(1, weight=1)  
-        self.bot_screen.grid_columnconfigure(2, weight=1)
-            
-
-        self.logo = tk.PhotoImage(file="logo.png")
-        self.logo_label = tk.Label(self.bot_screen,image=self.logo)
-        self.logo_label.grid(row = 1 , column=2)
         
 
 
