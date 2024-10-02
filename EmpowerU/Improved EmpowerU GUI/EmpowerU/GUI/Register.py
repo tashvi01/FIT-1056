@@ -77,7 +77,7 @@ class Register(tk.Frame):
         (None)
         """
         self.hide_register()
-        self.master.show_login()
+        self.master.show_signin()
 
     def show_register(self):
         """
