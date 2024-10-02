@@ -1,4 +1,6 @@
 import tkinter as tk
+import pymysql as pm
+
 class SignIn(tk.Frame):
     def __init__(self, master):
         """
@@ -44,26 +46,61 @@ class SignIn(tk.Frame):
         self.alert_label.grid(row=4, column=0, columnspan=2, pady=5)  # Center alert message
 
         # Create sign-in button
-        self.signin_button = tk.Button(self.mainframe, text="Sign In")
+        self.signin_button = tk.Button(self.mainframe, text="Sign In", command= self.sign_in)
         self.signin_button.grid(row=5, column=1, padx=10, pady=5)
 
         # Create sign-out button
         self.signout_button = tk.Button(self.mainframe, text="Sign Out", command=self.sign_out)
         self.signout_button.grid(row=5, column=0, padx=10, pady=5)
-    def sign_in(self):
 
-        username = self.username_var.get()
-        password = self.password_var.get()
-        "This was code when I used my own authenticate method, get rid of when you implement your own"
-        # student_user = Student.authenticate(username, password)
-        # if isinstance(student_user, Student):
-        #     student_page = StudentPage(self.master, student_user)
-        #     self.hide_signin_page()
-        #     student_page.show_student_page()
-        # else:
-        #     self.alert_var.set("Invalid username or password. Please try again.")
+    def authenticate(self, username_input, password_input):
+        """
+        Checks whether the username and password entered are correct 
+
+        Parameters:
+        self
+        username_input (str): the username the user enters
+        password_input (str): the password the user enters
+
+        Returns:
+        None      
+        """
+        self.username_input = username_input
+        self.password_input = password_input
+        conn= pm.connect(host='localhost', user='root', password='FIT1056') 
+        cr=conn.cursor() 
+        cr.execute("USE Users")
+        cr.execute("SELECT * from STUDENTS where username=%s and password=%s",(self.username_input, self.password_input))
+        result = cr.fetchone()
+        self.alert_var.set("")
+        if result is None:
+            self.alert_var.set("Invalid username or password. Please try again.")
+        else:
+            #show hompeage
+            pass
+
         self.username_var.set("")
         self.password_var.set("")
+
+        conn.commit()
+        conn.close()
+
+    def sign_in(self):
+        """
+        Stores the User's username and password and calls the authenticate function
+
+        Parameters:
+        self
+     
+        Outputs: 
+        None
+        """
+        self.username = self.username_var.get()
+        self.password = self.password_var.get()
+        print(self.username)
+        print(self.password)
+        self.authenticate(self.username, self.password)
+        
     def hide_signin_page(self):
         self.mainframe.grid_forget()
     def sign_out(self):
