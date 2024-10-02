@@ -17,7 +17,8 @@ class SignIn(tk.Frame):
         self.mainframe.grid(column=0, row=0, sticky="nsew")
 
         # Load logo image
-        self.logo = tk.PhotoImage(file="logo.png")
+        file_path = "./GUI/logo.png"
+        self.logo = tk.PhotoImage(file=file_path)
         self.label = tk.Label(self.mainframe, image=self.logo, width=750, height=300)
         self.label.image = self.logo
         self.label.grid(row=0, column=0, columnspan=2, sticky=tk.S, pady=10)

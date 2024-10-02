@@ -1,5 +1,5 @@
 import tkinter as tk
-from GUI.Login_UI import LoginScreen
+from GUI.Login_UI import SignIn
 
 class EmpowerU(tk.Tk):
     def __init__(self, title, width, height, bg):
@@ -14,7 +14,7 @@ class EmpowerU(tk.Tk):
         super().geometry(f"{width}x{height}")
         super().configure(bg=bg)
 
-        self.login = LoginScreen(master=self)
+        self.login = SignIn(master=self)
         self.show_login()
 
     def show_login(self):
