@@ -14,20 +14,20 @@ class EmpowerU(tk.Tk):
         super().geometry(f"{width}x{height}")
         super().configure(bg=bg)
 
-        self.login = SignIn(master=self)
-        self.show_login()
+        self.signin = SignIn(master=self)
+        self.show_signin()
 
-    def show_login(self):
+    def show_signin(self):
         """
-        Displays the login page to make it visible in the main window.
+        Displays the signin page to make it visible in the main window.
         """
-        self.login.place(relx=.5, rely=.5, anchor=tk.CENTER)
+        self.signin.place(relx=.5, rely=.5, anchor=tk.CENTER)
 
-    def hide_login(self):
+    def hide_signin(self):
         """
-        Hides the login page to make it invisible in the main window.
+        Hides the signin page to make it invisible in the main window.
         """
-        self.login.place_forget()
+        self.signin.place_forget()
 
 if __name__ == "__main__":
     # DO NOT MODIFY
