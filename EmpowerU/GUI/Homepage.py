@@ -20,15 +20,14 @@ class Homepage(tk.Frame):
         self.top_bar = tk.Frame(self.master, bg="steelblue")  # Specify the background color and height
         self.top_bar.grid(row=0, column=0, sticky="new")  # Place it in the first row and expand it east-west
 
-        self.grid_rowconfigure(0, weight=0)  # Keep the top bar fixed height
         
-        self.grid_columnconfigure(0, weight=1) #allows column 0 to exapnd horizontally
 
+        #Home label
         # fotnsize https://www.geeksforgeeks.org/how-to-change-the-tkinter-label-font-size/
         self.home_label = tk.Label(self.top_bar, text="HOME", bg="steelblue",font = "Impact 20")
         self.home_label.grid(row=0,column=0,padx=20,pady=20)
 
-
+        #Progress bar
         #TODO: progress bar
         self.progressbar_filler = tk.Label(self.top_bar,text = "PROGRESS BAR PLACEHOLDER",font = "Impact 20")
         self.progressbar_filler.grid(row=0,column=1,padx=20,pady=20)
