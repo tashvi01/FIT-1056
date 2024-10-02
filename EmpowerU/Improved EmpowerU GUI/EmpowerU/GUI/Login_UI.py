@@ -13,46 +13,45 @@ class SignIn(tk.Frame):
         None
         """
         super().__init__(master)
-        self.mainframe = tk.Frame(master, padx=10, pady=10)  # Increased padding for mainframe
-        self.mainframe.grid(column=0, row=0, sticky="nsew")
+        super().__init__(master=master)
+        super().configure(bg="navy")
+        self.master = master
 
         # Load logo image
-        file_path = "./GUI/logo.png"
-        self.logo = tk.PhotoImage(file=file_path)
-        self.label = tk.Label(self.mainframe, image=self.logo, width=750, height=300)
-        self.label.image = self.logo
-        self.label.grid(row=0, column=0, columnspan=2, sticky=tk.S, pady=10)
+        self.logo = tk.PhotoImage(file="./GUI/logo.png")  
+        self.label = tk.Label(master=self, image=self.logo, width=750, height=300, bg="navy")  
+        self.label.grid(row=0, column=0, columnspan=2, sticky=tk.S, padx=10, pady=10) 
 
         # Welcome heading
-        self.welcome_label = tk.Label(self.mainframe, text="Welcome to EmpowerU", font=("Arial Bold", 20))
-        self.welcome_label.grid(row=1, column=0, columnspan=2, pady=10)
+        self.welcome_label = tk.Label(master=self, text="Welcome to EmpowerU", font=("Arial Bold", 20), bg="navy", fg="white")
+        self.welcome_label.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
 
         # Create username label and entry
-        self.username_label = tk.Label(self.mainframe, text="Username:")
-        self.username_label.grid(row=2, column=0, sticky="e", padx=5, pady=5)  # Align label to the right
+        self.username_label = tk.Label(master=self, text="Username:", bg="navy", fg="white")
+        self.username_label.grid(row=2, column=0, sticky="e", padx=10, pady=10)  # Align label to the right
         self.username_var = tk.StringVar()
-        self.username_entry = tk.Entry(self.mainframe, textvariable=self.username_var)
-        self.username_entry.grid(row=2, column=1, padx=5, pady=5)
+        self.username_entry = tk.Entry(master=self, textvariable=self.username_var)
+        self.username_entry.grid(row=2, column=1, sticky="w", padx=10, pady=10)
 
         # Create password label and entry
-        self.password_label = tk.Label(self.mainframe, text="Password:")
-        self.password_label.grid(row=3, column=0, sticky="e", padx=5, pady=5)  # Align label to the right
+        self.password_label = tk.Label(master=self, text="Password:", bg="navy", fg="white")
+        self.password_label.grid(row=3, column=0, sticky="e", padx=10, pady=10)  # Align label to the right
         self.password_var = tk.StringVar()
-        self.password_entry = tk.Entry(self.mainframe, textvariable=self.password_var, show="*")
-        self.password_entry.grid(row=3, column=1, padx=5, pady=5)
+        self.password_entry = tk.Entry(master=self, textvariable=self.password_var, show="*")
+        self.password_entry.grid(row=3, column=1, sticky="w", padx=10, pady=10)
 
         # Alert message label
         self.alert_var = tk.StringVar()
-        self.alert_label = tk.Label(self.mainframe, textvariable=self.alert_var, fg="red")
-        self.alert_label.grid(row=4, column=0, columnspan=2, pady=5)  # Center alert message
+        self.alert_label = tk.Label(master=self, textvariable=self.alert_var, bg="navy", fg="red")
+        self.alert_label.grid(row=4, column=0, columnspan=2, pady=10)  # Center alert message
 
         # Create sign-in button
-        self.signin_button = tk.Button(self.mainframe, text="Sign In", command= self.sign_in)
-        self.signin_button.grid(row=5, column=1, padx=10, pady=5)
+        self.signin_button = tk.Button(master=self, text="Sign In", command= self.sign_in)
+        self.signin_button.grid(row=6, column=0, columnspan=2, sticky="n", padx=10, pady=10)
 
         # Create sign-out button
-        self.signout_button = tk.Button(self.mainframe, text="Sign Out", command=self.sign_out)
-        self.signout_button.grid(row=5, column=0, padx=10, pady=5)
+        self.signout_button = tk.Button(master=self, text="Sign Out", command=self.sign_out)
+        self.signout_button.grid(row=7, column=0, columnspan=2, sticky="n", padx=10, pady=10)
 
     def authenticate(self, username_input, password_input):
         """
@@ -103,7 +102,8 @@ class SignIn(tk.Frame):
         self.authenticate(self.username, self.password)
         
     def hide_signin_page(self):
-        self.mainframe.grid_forget()
+        self.master.hide_signin()
+        
     def sign_out(self):
         # Logic for sign out can be implemented here
         pass
