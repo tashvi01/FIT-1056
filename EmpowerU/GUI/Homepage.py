@@ -18,8 +18,7 @@ class Homepage(tk.Frame):
         self.config(bg="lightblue")
         
         #BOTTOM HALF OF SCREEN
-        # self.bot_screen = tk.Frame(self.master, bg = "lightblue")
-        # self.bot_screen.grid(row=0,column=0,sticky="sew")
+        
 
         # # Configure rows and columns for even distribution
         self.mainframe.grid_rowconfigure(0, weight=1)
@@ -34,6 +33,15 @@ class Homepage(tk.Frame):
         self.logo = tk.PhotoImage(file="logo.png")
         self.logo_label = tk.Label(self.mainframe,image=self.logo)
         self.logo_label.grid(row = 1, column=2,sticky="e")
+
+        #TODO replace placeholder with functions
+        #LESSON PLACEHOLDER
+        self.lesson_label = tk.Label(self.mainframe,text="LESSON PLACEHOLDER", font=20, bg = "lightblue").grid(row = 0 , column=0, rowspan=2)
+        #FORUM PLACEHOLDER
+        self.forum_label = tk.Label(self.mainframe,text= "FORUM PLACEHOLD",font=20,bg = "lightblue")
+        self.forum_label.grid(row=1,rowspan=2, column=0)
+
+        #
         
 
         self.top_bar = tk.Frame(self.master, bg="steelblue")  # Specify the background color and height
