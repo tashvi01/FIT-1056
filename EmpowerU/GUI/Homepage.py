@@ -16,10 +16,13 @@ class Homepage(tk.Frame):
         #background colour learnt from https://www.geeksforgeeks.org/tkinter-colors/
         self.config(bg="lightblue")
         
+        self.logo = tk.PhotoImage(file="logo.png")
+        
+
 
     def Botscreen(self):
 
-        bot_screen = tk.Frame(self, bg = "lightblue")
+        bot_screen = tk.Frame(self.master, bg = "lightblue")
         bot_screen.grid(row=1,column=0,columnspan=3,sticky="nsew")
 
         for i in [0,1]:
@@ -33,8 +36,8 @@ class Homepage(tk.Frame):
 
     def Topbar(self):
 
-        top_bar = tk.Frame(self, bg="steelblue")  # Specify the background color and height
-        top_bar.grid(row=0, column=0, sticky="ew")  # Place it in the first row and expand it east-west
+        top_bar = tk.Frame(self.master, bg="steelblue")  # Specify the background color and height
+        top_bar.grid(row=0, column=0, sticky="new")  # Place it in the first row and expand it east-west
 
         self.grid_rowconfigure(0, weight=0)  # Keep the top bar fixed height
         
