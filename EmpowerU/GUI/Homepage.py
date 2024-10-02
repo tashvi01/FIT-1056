@@ -14,7 +14,7 @@ class Homepage(tk.Frame):
         
         
         #background colour learnt from https://www.geeksforgeeks.org/tkinter-colors/
-    
+        self.config(bg="lightblue")
         
 
     def Botscreen(self):
