@@ -41,7 +41,7 @@ class Homepage(tk.Frame):
         self.forum_label = tk.Label(self.mainframe,text= "FORUM PLACEHOLD",font=20,bg = "lightblue")
         self.forum_label.grid(row=1,rowspan=2, column=0)
 
-        #
+        
         
 
         self.top_bar = tk.Frame(self.master, bg="steelblue")  # Specify the background color and height
@@ -59,13 +59,16 @@ class Homepage(tk.Frame):
         self.progressbar_filler = tk.Label(self.top_bar,text = "PROGRESS BAR PLACEHOLDER",font = "Impact 20", bg="steelblue")
         self.progressbar_filler.grid(row=0,column=1,padx=20,pady=20)
 
+        #profile button
         self.profile_button = tk.Button(self.top_bar,text="PROFILE",font = "Impact 20", bg="mediumspringgreen")
-        self.profile_button.grid(row=0,column=2,padx=20,pady=20)
+        self.profile_button.grid(row=0,column=2,padx=2)
 
         #configures the columns for the top bar
         self.top_bar.grid_columnconfigure(0, weight=1)
         self.top_bar.grid_columnconfigure(1, weight=1)
         self.top_bar.grid_columnconfigure(2, weight=1)
+        self.top_bar.grid_rowconfigure(0, weight=1)
+        
 
 
         
